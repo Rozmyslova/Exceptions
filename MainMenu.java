@@ -1,23 +1,29 @@
-import java.util.Scanner;
-
-
 public class MainMenu {
-    /**
-     * @throws Exception
-     * 
-     */
-    public static void main () throws Exception {
-        Scanner sc = new Scanner(System.in);
-        String password = sc.nextLine();
 
+    public static void main(String[] args) {
+        PasswordVerifier passwordVerifier = new PasswordVerifier();
+        try {
+            passwordVerifier.verifyPassword("1234567");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-        PasswordVerifier pv = new PasswordVerifier();
-        extracted(password, pv);
+        try {
+            passwordVerifier.verifyPassword("password");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-    }
+        try {
+            passwordVerifier.verifyPassword("Password");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-    private static void extracted(String password, PasswordVerifier pv) throws Exception {
-        pv.verifyPassword(password);
+        try {
+            passwordVerifier.verifyPassword("Password1");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
-
